@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@127.0.0.1:1521/orcl
+    username: root
+    password: root
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  config-location: classpath:mybatis-config.xml
+
+mapper:
+  mappers: tk.mybatis.mapper.common.Mapper
+  before: true
+  not-empty: false
+  identity: Oracle
