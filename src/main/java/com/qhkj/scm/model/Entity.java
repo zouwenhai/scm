@@ -28,5 +28,5 @@ public class Entity {
     private String updateUser;
 
 
-    private String version;
+
 }
