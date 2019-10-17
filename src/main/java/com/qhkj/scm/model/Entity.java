@@ -11,8 +11,9 @@ import java.time.LocalDateTime;
  */
 
 
-
-
+/**
+ * 实体父类
+ */
 public class Entity {
 
     private LocalDateTime createTime;
@@ -22,8 +23,6 @@ public class Entity {
 
 
     private String createUser;
-
-
 
 
     private String updateUser;
