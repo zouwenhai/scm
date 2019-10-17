@@ -28,6 +28,7 @@ public class ScmApplicationTests {
 
     @Autowired
     private UserService userService;
+
     @Test
     public void contextLoads() {
 
@@ -49,6 +50,13 @@ public class ScmApplicationTests {
         userService.batchInsert();
     }
 
+
+    @Test
+    public void update() {
+        UserEntity userEntity = userMapper.selectByPrimaryKey(9);
+        userEntity.setRealName("张三");
+        userMapper.updateByPrimaryKeySelective(userEntity);
+    }
 
 
 }

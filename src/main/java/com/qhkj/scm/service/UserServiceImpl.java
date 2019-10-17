@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void batchInsert() {
-        int count =2000;
+        int count =2;
 
         for(int i=0;i<count;i++){
             UserEntity userEntity = new UserEntity();
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
             userEntity.setPassword("123");
             userEntity.setRealName("郑爽");
             userEntity.setIdCard(UUID.randomUUID().toString());
-            userMapper.insert(userEntity);
+            userMapper.insertSelective(userEntity);
 
         }
 
