@@ -2,6 +2,7 @@ package com.qhkj.scm.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import tk.mybatis.mapper.annotation.Version;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -18,7 +19,6 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name = "TB_USER")
-
 public class UserEntity implements Serializable {
 
 
@@ -26,10 +26,9 @@ public class UserEntity implements Serializable {
 
 
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY,generator = "select SEQ_TB_USER.nextVal from dual")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "select SEQ_TB_USER.nextVal from dual")
     @Id
     private Long id;
-
 
 
     @Column(name = "USER_NAME")
@@ -47,9 +46,12 @@ public class UserEntity implements Serializable {
     @Column(name = "SEX")
     private Sex sex;
 
-    @Column(name="ID_CARD")
+    @Column(name = "ID_CARD")
     private String idCard;
 
+    @Version
+    @Column(name = "version")
+    private Integer version;
 
 
 }
