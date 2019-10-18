@@ -49,6 +49,9 @@ public class UserEntity implements Serializable {
     @Column(name = "ID_CARD")
     private String idCard;
 
+
+
+    git
     @Version
     @Column(name = "version")
     private Integer version;
