@@ -51,7 +51,6 @@ public class UserEntity implements Serializable {
 
 
 
-    git
     @Version
     @Column(name = "version")
     private Integer version;

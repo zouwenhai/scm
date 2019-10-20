@@ -55,7 +55,17 @@ public class ScmApplicationTests {
     public void update() {
         UserEntity userEntity = userMapper.selectByPrimaryKey(9);
         userEntity.setRealName("张三");
+        //在进行更新之前，它会通过注解获取当前对象的version值，然后加1，所以在更新时，version一定要有值
+        //否则会报错
         userMapper.updateByPrimaryKeySelective(userEntity);
+    }
+
+    @Test
+    public void test(){
+        UserEntity userEntity  = new UserEntity();
+        userEntity.setRealName("李四");
+        userMapper.insert(userEntity);
+
     }
 
 
