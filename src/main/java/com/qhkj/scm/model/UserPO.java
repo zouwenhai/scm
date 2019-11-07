@@ -44,7 +44,6 @@ public class UserPO implements Serializable {
     private String realName;
 
 
-
     @Column(name = "ID_CARD")
     private String idCard;
 
@@ -60,8 +59,7 @@ public class UserPO implements Serializable {
     @Column(name = "version")
     private Integer version;
 
-
-
+    private String test;
 
 
 }
