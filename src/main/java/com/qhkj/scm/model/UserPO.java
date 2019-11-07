@@ -63,4 +63,7 @@ public class UserPO implements Serializable {
     private Integer version;
 
 
+    private String test;
+
+
 }
