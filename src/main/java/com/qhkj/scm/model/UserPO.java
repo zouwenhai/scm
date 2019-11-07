@@ -44,8 +44,6 @@ public class UserPO implements Serializable {
     private String realName;
 
 
-    @Column(name = "SEX")
-    private Sex sex;
 
 
 
