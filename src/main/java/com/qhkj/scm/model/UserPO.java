@@ -47,17 +47,6 @@ public class UserPO implements Serializable {
     @Column(name = "SEX")
     private Sex sex;
 
-    @Column(name = "ID_CARD")
-    private String idCard;
-
-
-    @Column(name = "AGE")
-    private Integer age;
-
-    @ApiModelProperty(name = "年级")
-    @Column(name = "GENDER")
-    private String gender;
-
 
     private String test;
 
