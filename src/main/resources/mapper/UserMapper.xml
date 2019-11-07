@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qhkj.scm.mapper.UserMapper">
 
-    <resultMap id="BaseResultMap" type="com.qhkj.scm.model.UserEntity">
+    <resultMap id="BaseResultMap" type="com.qhkj.scm.model.UserPO">
         <result column="ID" jdbcType="INTEGER" property="id"/>
         <result column="USER_NAME" jdbcType="VARCHAR" property="userName"/>
         <result column="PASSWORD" jdbcType="VARCHAR" property="passwsord"/>
