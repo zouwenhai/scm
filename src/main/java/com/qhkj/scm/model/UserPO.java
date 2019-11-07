@@ -48,7 +48,7 @@ public class UserPO implements Serializable {
     private Sex sex;
 
 
-    private String test;
+
 
 
 }
