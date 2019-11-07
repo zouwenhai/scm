@@ -1,5 +1,6 @@
 package com.qhkj.scm.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import tk.mybatis.mapper.annotation.Version;
@@ -9,7 +10,7 @@ import javax.persistence.Entity;
 import java.io.Serializable;
 
 /**
- * @ClassName UserEntity
+ * @ClassName UserPO
  * @Description TODO
  * @Author zouwenhai
  * @Date 2019/8/31 23:21
@@ -19,7 +20,7 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name = "TB_USER")
-public class UserEntity implements Serializable {
+public class UserPO implements Serializable {
 
 
     private static final long serialVersionUID = -6864719428965280679L;
@@ -50,6 +51,12 @@ public class UserEntity implements Serializable {
     private String idCard;
 
 
+    @Column(name = "AGE")
+    private Integer age;
+
+    @ApiModelProperty(name = "年级")
+    @Column(name = "GENDER")
+    private String gender;
 
     @Version
     @Column(name = "version")

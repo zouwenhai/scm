@@ -1,18 +1,14 @@
 package com.qhkj.scm;
 
 import com.qhkj.scm.mapper.UserMapper;
-import com.qhkj.scm.model.Sex;
-import com.qhkj.scm.model.UserEntity;
-import com.qhkj.scm.model.WoMan;
+import com.qhkj.scm.model.UserPO;
 import com.qhkj.scm.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
@@ -39,7 +35,7 @@ public class ScmApplicationTests {
     @Test
     public void userTest() {
 
-        List<UserEntity> userEntities = userMapper.selectAll();
+        List<UserPO> userEntities = userMapper.selectAll();
         log.info(userEntities.get(0).toString());
 
     }
@@ -53,8 +49,8 @@ public class ScmApplicationTests {
 
     @Test
     public void update() {
-        UserEntity userEntity = userMapper.selectByPrimaryKey(9);
-        userEntity.setRealName("张三");
+        UserPO userEntity = userMapper.selectByPrimaryKey(9);
+        userEntity.setRealName("李四");
         //在进行更新之前，它会通过注解获取当前对象的version值，然后加1，所以在更新时，version一定要有值
         //否则会报错
         userMapper.updateByPrimaryKeySelective(userEntity);
@@ -62,8 +58,9 @@ public class ScmApplicationTests {
 
     @Test
     public void test(){
-        UserEntity userEntity  = new UserEntity();
+        UserPO userEntity  = new UserPO();
         userEntity.setRealName("李四");
+        userEntity.setUserName("李四");
         userMapper.insert(userEntity);
 
     }
