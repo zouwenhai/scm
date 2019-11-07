@@ -37,7 +37,7 @@ public class UserPO implements Serializable {
 
 
     @Column(name = "PASSWORD")
-    private String password;
+    private String password1;
 
 
     @Column(name = "REAL_NAME")
