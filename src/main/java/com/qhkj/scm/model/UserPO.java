@@ -59,6 +59,9 @@ public class UserPO implements Serializable {
     @Column(name = "version")
     private Integer version;
 
+    @Column(name = "SEX")
+    private Sex sex;
+
 
 
 
