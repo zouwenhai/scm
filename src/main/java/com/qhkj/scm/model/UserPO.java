@@ -37,13 +37,27 @@ public class UserPO implements Serializable {
 
 
     @Column(name = "PASSWORD")
-    private String password1;
+    private String password;
 
 
     @Column(name = "REAL_NAME")
     private String realName;
 
 
+    @Column(name = "ID_CARD")
+    private String idCard;
+
+
+    @Column(name = "AGE")
+    private Integer age;
+
+    @ApiModelProperty(name = "年级")
+    @Column(name = "GENDER")
+    private String gender;
+
+    @Version
+    @Column(name = "version")
+    private Integer version;
 
 
 
