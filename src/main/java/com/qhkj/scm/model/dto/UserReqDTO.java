@@ -34,6 +34,9 @@ public class UserReqDTO implements Serializable {
     private Integer age;
 
 
+    private Integer version;
+
+
     @Override
     public String toString() {
         return "UserReqDTO{" +
