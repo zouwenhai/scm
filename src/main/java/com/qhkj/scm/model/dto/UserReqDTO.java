@@ -42,6 +42,9 @@ public class UserReqDTO implements Serializable {
     private String workspace;
 
 
+    private String home;
+
+
     @Override
     public String toString() {
         return "UserReqDTO{" +
