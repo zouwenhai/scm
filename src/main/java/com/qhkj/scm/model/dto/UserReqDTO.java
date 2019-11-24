@@ -2,12 +2,9 @@ package com.qhkj.scm.model.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiOperation;
 import lombok.Getter;
 import lombok.Setter;
-import tk.mybatis.mapper.annotation.Version;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
