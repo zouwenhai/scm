@@ -33,6 +33,8 @@ public class UserReqDTO implements Serializable {
 
     private Integer version;
 
+    private Integer number;
+
 
     @Override
     public String toString() {
