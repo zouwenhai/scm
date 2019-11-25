@@ -1,5 +1,6 @@
 package com.qhkj.scm.model;
 
+import com.qhkj.scm.common.annotation.AesEncode;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,10 +36,8 @@ public class UserPO implements Serializable {
     @Column(name = "USER_NAME")
     private String userName;
 
-
     @Column(name = "PASSWORD")
     private String password;
-
 
     @Column(name = "REAL_NAME")
     private String realName;
@@ -61,9 +60,6 @@ public class UserPO implements Serializable {
 
     @Column(name = "SEX")
     private Sex sex;
-
-
-
 
 
 }

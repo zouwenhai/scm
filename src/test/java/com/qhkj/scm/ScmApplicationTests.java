@@ -61,6 +61,7 @@ public class ScmApplicationTests {
         UserPO userEntity  = new UserPO();
         userEntity.setRealName("李四");
         userEntity.setUserName("李四");
+        userEntity.setPassword("zou19941205");
         userMapper.insert(userEntity);
 
     }
