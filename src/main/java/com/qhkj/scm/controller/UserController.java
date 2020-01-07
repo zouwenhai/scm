@@ -4,6 +4,8 @@ import com.qhkj.scm.common.annotation.AesEncode;
 import com.qhkj.scm.mapper.UserMapper;
 import com.qhkj.scm.model.UserPO;
 import com.qhkj.scm.model.dto.UserReqDTO;
+import com.qhkj.scm.service.SeatOrderService;
+import com.qhkj.scm.service.SeatService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,13 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private SeatService seatService;
+
+
+    @Autowired
+    private SeatOrderService seatOrderService;
+
 
     @ApiOperation(value = "测试方法")
     @PostMapping("/login")
@@ -39,6 +48,14 @@ public class UserController {
         userEntity.setPassword("zou19941205");
         userMapper.insert(userEntity);
         return userReqDTO.toString();
+    }
+
+
+    @ApiOperation(value = "入座")
+    @PostMapping("/seat")
+    public String seat(Long userId) {
+
+        return null;
     }
 
 

@@ -37,8 +37,8 @@ public class UserServiceImpl implements UserService {
             userEntity.setVersion(0);
             userEntity.setIdCard(UUID.randomUUID().toString());
             userMapper.insertSelective(userEntity);
-
         }
+
 
 
     }
