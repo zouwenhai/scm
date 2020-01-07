@@ -1,4 +1,4 @@
-package com.qhkj.scm.controller.user;
+package com.qhkj.scm.controller;
 
 import com.qhkj.scm.common.annotation.AesEncode;
 import com.qhkj.scm.mapper.UserMapper;

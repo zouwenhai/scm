@@ -27,11 +27,9 @@ public class UserPO implements Serializable {
     private static final long serialVersionUID = -6864719428965280679L;
 
 
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "select SEQ_TB_USER.nextVal from dual")
     @Id
+    @Column(name = "ID")
     private Long id;
-
 
     @Column(name = "USER_NAME")
     private String userName;
@@ -55,7 +53,7 @@ public class UserPO implements Serializable {
     private String gender;
 
     @Version
-    @Column(name = "version")
+    @Column(name = "VERSION")
     private Integer version;
 
     @Column(name = "SEX")
