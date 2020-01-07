@@ -1,6 +1,8 @@
 package com.qhkj.scm;
 
+import com.qhkj.scm.mapper.SeatMapper;
 import com.qhkj.scm.mapper.UserMapper;
+import com.qhkj.scm.model.SeatPO;
 import com.qhkj.scm.model.UserPO;
 import com.qhkj.scm.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +26,9 @@ public class ScmApplicationTests {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private SeatMapper seatMapper;
 
     @Test
     public void contextLoads() {
@@ -57,8 +62,8 @@ public class ScmApplicationTests {
     }
 
     @Test
-    public void test(){
-        UserPO userEntity  = new UserPO();
+    public void test() {
+        UserPO userEntity = new UserPO();
         userEntity.setRealName("李四");
         userEntity.setUserName("李四");
         userEntity.setPassword("zou19941205");
@@ -66,5 +71,14 @@ public class ScmApplicationTests {
 
     }
 
+
+    @Test
+    public void test2() {
+        for (int i = 0; i < 20; i++) {
+            SeatPO seatPO = new SeatPO();
+            seatPO.setNumber(String.valueOf(i));
+            seatMapper.insertSelective(seatPO);
+        }
+    }
 
 }

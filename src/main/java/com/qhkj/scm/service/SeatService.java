@@ -10,5 +10,5 @@ import com.qhkj.scm.model.SeatPO;
  */
 public interface SeatService {
 
-    int save(SeatPO seatPO);
+    int update(SeatPO seatPO);
 }

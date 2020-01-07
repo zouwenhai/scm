@@ -2,6 +2,7 @@ package com.qhkj.scm.controller;
 
 import com.qhkj.scm.common.annotation.AesEncode;
 import com.qhkj.scm.mapper.UserMapper;
+import com.qhkj.scm.model.SeatPO;
 import com.qhkj.scm.model.UserPO;
 import com.qhkj.scm.model.dto.UserReqDTO;
 import com.qhkj.scm.service.SeatOrderService;
@@ -34,10 +35,6 @@ public class UserController {
     private SeatService seatService;
 
 
-    @Autowired
-    private SeatOrderService seatOrderService;
-
-
     @ApiOperation(value = "测试方法")
     @PostMapping("/login")
     @AesEncode
@@ -52,10 +49,13 @@ public class UserController {
 
 
     @ApiOperation(value = "入座")
-    @PostMapping("/seat")
-    public String seat(Long userId) {
-
-        return null;
+    @RequestMapping("/seat")
+    public String seat(Long id) {
+        SeatPO seatPO = new SeatPO();
+        seatPO.setId(id);
+        seatPO.setIdIdle(1);
+        seatService.update(seatPO);
+        return "success";
     }
 
 
