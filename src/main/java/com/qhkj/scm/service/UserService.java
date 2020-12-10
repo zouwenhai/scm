@@ -1,5 +1,7 @@
 package com.qhkj.scm.service;
 
+import com.qhkj.scm.model.UserPO;
+
 /**
  * @ClassName UserService
  * @Description TODO
@@ -12,4 +14,14 @@ public interface UserService {
 
     void batchInsert();
 
+    void add(UserPO userPO);
+
+    /**
+     * 更新和删除
+     */
+    void udUser();
+
+    void deleteData(int id);
+
+    void deleteAllData();
 }

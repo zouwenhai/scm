@@ -8,5 +8,6 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   config-location: classpath:mybatis-config.xml
   type-handlers-package:
-
-
+logging:
+  level:
+    com.qhkj.scm.mapper: debug

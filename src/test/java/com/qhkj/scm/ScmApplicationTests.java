@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = ScmApplication.class)//指定启动类
@@ -81,4 +82,50 @@ public class ScmApplicationTests {
         }
     }
 
+
+    /**
+     * 先执行子线程
+     * 子线程执行完毕后再再执行主线程
+     *
+     * @throws InterruptedException
+     */
+    @Test
+    public void test3() throws InterruptedException {
+        System.out.println(String.format("开始"));
+        CountDownLatch countDownLatch = new CountDownLatch(50);
+        for (int i = 0; i < 50; i++) {
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    UserPO userPO = new UserPO();
+                    userPO.setUserName("a");
+                    userPO.setRealName("A");
+                    userService.add(userPO);
+                    countDownLatch.countDown();
+                }
+            });
+            thread.start();
+        }
+        countDownLatch.await();
+        System.out.println(String.format("主线程开始执行：", Thread.currentThread().getName()));
+
+    }
+
+
+    @Test
+    public void test4() {
+        userService.udUser();
+
+    }
+
+
+    @Test
+    public void test5() {
+        //验证下如果补货异常是否还会触发事务回滚
+        userService.deleteAllData();
+       // userService.deleteData();
+    }
+
+
 }
+

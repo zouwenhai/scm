@@ -5,13 +5,16 @@
     <resultMap id="BaseResultMap" type="com.qhkj.scm.model.UserPO">
         <result column="ID" jdbcType="INTEGER" property="id"/>
         <result column="USER_NAME" jdbcType="VARCHAR" property="userName"/>
-        <result column="PASSWORD" jdbcType="VARCHAR" property="passwsord"/>
+        <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
         <result column="REAL_NAME" jdbcType="VARCHAR" property="realName"/>
         <result column="SEX" jdbcType="INTEGER" property="sex" typeHandler="com.qhkj.scm.handler.Sexhandler"/>
         <result column="ID_CARD" jdbcType="VARCHAR" property="idCard"/>
     </resultMap>
+    <update id="updateUserByUserName">
 
+        update TB_USER set PASSWORD=#{password} where USER_NAME=#{userName}
 
+    </update>
 
 
 </mapper>

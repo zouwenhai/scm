@@ -48,6 +48,11 @@ public class UserController {
     }
 
 
+
+
+
+
+
     @ApiOperation(value = "入座")
     @RequestMapping("/seat")
     public String seat(Long id) {
