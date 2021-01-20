@@ -1,9 +1,13 @@
-package com.qhkj.scm.model;
+package com.qhkj.scm.model.entity;
 
-import com.qhkj.scm.common.annotation.AesEncode;
+import com.qhkj.scm.common.enums.SexTypeEnum;
+import com.qhkj.scm.handler.SexTypeHandler;
+import com.qhkj.scm.handler.Sexhandler;
+import com.qhkj.scm.model.Sex;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import tk.mybatis.mapper.annotation.ColumnType;
 import tk.mybatis.mapper.annotation.Version;
 
 import javax.persistence.*;
@@ -11,7 +15,7 @@ import javax.persistence.Entity;
 import java.io.Serializable;
 
 /**
- * @ClassName UserPO
+ * @ClassName UserEntity
  * @Description TODO
  * @Author zouwenhai
  * @Date 2019/8/31 23:21
@@ -21,7 +25,7 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name = "TB_USER")
-public class UserPO implements Serializable {
+public class UserEntity implements Serializable {
 
 
     private static final long serialVersionUID = -6864719428965280679L;
@@ -56,8 +60,20 @@ public class UserPO implements Serializable {
     @Column(name = "VERSION")
     private Integer version;
 
+    /**
+     * 自定义的枚举转换器
+     */
     @Column(name = "SEX")
-    private Sex sex;
+    @ColumnType(typeHandler = SexTypeHandler.class)
+    private SexTypeEnum sexTypeEnum;
+
+
+    /*   *//**
+     * 自定义类转换器
+     *//*
+    @Column(name = "SEX")
+    @ColumnType(typeHandler = Sexhandler.class)
+    private Sex sex;*/
 
 
 }

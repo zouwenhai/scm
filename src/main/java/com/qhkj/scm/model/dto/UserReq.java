@@ -17,7 +17,7 @@ import java.io.Serializable;
 @ApiModel("用户请求DTO")
 @Getter
 @Setter
-public class UserReqDTO implements Serializable {
+public class UserReq implements Serializable {
 
     @ApiModelProperty("用户名")
     @NotNull(message = "用户名不能为空")
@@ -45,12 +45,4 @@ public class UserReqDTO implements Serializable {
     private String home;
 
 
-    @Override
-    public String toString() {
-        return "UserReqDTO{" +
-                "userName='" + userName + '\'' +
-                ", passWord='" + passWord + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }

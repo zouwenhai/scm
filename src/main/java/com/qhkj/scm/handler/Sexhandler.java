@@ -19,7 +19,7 @@ import java.sql.SQLException;
  * @Date 2019/9/1 23:31
  * @Version 1.0
  */
-@MappedJdbcTypes(JdbcType.INTEGER)
+
 public class Sexhandler extends BaseTypeHandler<Sex> {
 
 

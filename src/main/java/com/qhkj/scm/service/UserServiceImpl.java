@@ -1,7 +1,9 @@
 package com.qhkj.scm.service;
 
+import com.qhkj.scm.common.annotation.DataSource;
+import com.qhkj.scm.common.enums.DataSourceType;
 import com.qhkj.scm.mapper.UserMapper;
-import com.qhkj.scm.model.UserPO;
+import com.qhkj.scm.model.entity.UserEntity;
 import com.qhkj.scm.model.WoMan;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +32,13 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
+    @DataSource(value = DataSourceType.SLAVER)
     public void batchInsert() {
         int count = 5;
 
         for (int i = 0; i < count; i++) {
-            UserPO userEntity = new UserPO();
+            UserEntity userEntity = new UserEntity();
             userEntity.setUserName("聪聪");
-            userEntity.setSex(new WoMan());
             userEntity.setPassword("123");
             userEntity.setRealName("王五");
             userEntity.setGender("M");
@@ -50,40 +52,39 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public synchronized void add(UserPO userPO) {
+    public synchronized void add(UserEntity userEntity) {
         System.out.println(String.format("threadName:{%s}", Thread.currentThread().getName()));
-        Example example = new Example(UserPO.class);
-        example.createCriteria().andEqualTo("userName", userPO.getUserName());
-        List<UserPO> list = userMapper.selectByExample(example);
+        Example example = new Example(UserEntity.class);
+        example.createCriteria().andEqualTo("userName", userEntity.getUserName());
+        List<UserEntity> list = userMapper.selectByExample(example);
         if (list.size() > 0) {
             log.info(String.format("该用户已经存在"));
             return;
         } else {
-            userMapper.insertSelective(userPO);
+            userMapper.insertSelective(userEntity);
         }
     }
 
     @Override
     public void udUser() {
-        UserPO userPO = new UserPO();
-        userPO.setId(14L);
-        userPO = userMapper.selectByPrimaryKey(userPO);
-        if (Objects.isNull(userPO)) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId(14L);
+        userEntity = userMapper.selectByPrimaryKey(userEntity);
+        if (Objects.isNull(userEntity)) {
             log.warn("对象为空");
             return;
         }
-        userMapper.updateUserByUserName(userPO);
-        userMapper.deleteByPrimaryKey(userPO);
+        userMapper.updateUserByUserName(userEntity);
+        userMapper.deleteByPrimaryKey(userEntity);
 
     }
 
     @Override
     public void deleteData(int id) {
 
-        if(id==5){
+        if (id == 5) {
             userMapper.deleteByPrimaryKey(id);
-        }
-        else if(id==15){
+        } else if (id == 15) {
             userMapper.deleteByPrimaryKey(id);
             String str = null;
             if (str.equals("")) {
@@ -99,7 +100,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(rollbackFor = Exception.class)
     public void deleteAllData() {
 
-        for(int i=5;i<=15;i++){
+        for (int i = 5; i <= 15; i++) {
             this.deleteData(i);
         }
         try {

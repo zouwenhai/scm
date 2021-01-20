@@ -1,6 +1,6 @@
 package com.qhkj.scm.mapper;
 
-import com.qhkj.scm.model.UserPO;
+import com.qhkj.scm.model.entity.UserEntity;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -12,8 +12,8 @@ import tk.mybatis.mapper.common.Mapper;
  * @Version 1.0
  */
 @Repository
-public interface UserMapper extends Mapper<UserPO> {
+public interface UserMapper extends Mapper<UserEntity> {
 
 
-    void updateUserByUserName(UserPO userPO);
+    void updateUserByUserName(UserEntity userEntity);
 }

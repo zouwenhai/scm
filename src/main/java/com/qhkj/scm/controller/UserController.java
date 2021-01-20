@@ -3,17 +3,14 @@ package com.qhkj.scm.controller;
 import com.qhkj.scm.common.annotation.AesEncode;
 import com.qhkj.scm.mapper.UserMapper;
 import com.qhkj.scm.model.SeatPO;
-import com.qhkj.scm.model.UserPO;
-import com.qhkj.scm.model.dto.UserReqDTO;
-import com.qhkj.scm.service.SeatOrderService;
+import com.qhkj.scm.model.dto.AddUserReq;
+import com.qhkj.scm.model.entity.UserEntity;
+import com.qhkj.scm.model.dto.UserReq;
 import com.qhkj.scm.service.SeatService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -38,19 +35,14 @@ public class UserController {
     @ApiOperation(value = "测试方法")
     @PostMapping("/login")
     @AesEncode
-    public String login(@Valid @RequestBody UserReqDTO userReqDTO) {
-        UserPO userEntity = new UserPO();
+    public String login(@Valid @RequestBody UserReq userReq) {
+        UserEntity userEntity = new UserEntity();
         userEntity.setRealName("李四");
         userEntity.setUserName("李四");
         userEntity.setPassword("zou19941205");
         userMapper.insert(userEntity);
-        return userReqDTO.toString();
+        return userReq.toString();
     }
-
-
-
-
-
 
 
     @ApiOperation(value = "入座")
@@ -60,6 +52,17 @@ public class UserController {
         seatPO.setId(id);
         seatPO.setIdIdle(1);
         seatService.update(seatPO);
+        return "success";
+    }
+
+
+    @ApiOperation(value = "添加用户")
+    @GetMapping(value = "/add")
+    public String addUser(@ModelAttribute AddUserReq addUserReq) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setSexTypeEnum(addUserReq.getSexTypeEnum());
+        userEntity.setUserName(addUserReq.getName());
+        userMapper.insertSelective(userEntity);
         return "success";
     }
 

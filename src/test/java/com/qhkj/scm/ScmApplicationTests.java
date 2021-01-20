@@ -2,8 +2,9 @@ package com.qhkj.scm;
 
 import com.qhkj.scm.mapper.SeatMapper;
 import com.qhkj.scm.mapper.UserMapper;
+import com.qhkj.scm.model.Man;
 import com.qhkj.scm.model.SeatPO;
-import com.qhkj.scm.model.UserPO;
+import com.qhkj.scm.model.entity.UserEntity;
 import com.qhkj.scm.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -41,7 +42,7 @@ public class ScmApplicationTests {
     @Test
     public void userTest() {
 
-        List<UserPO> userEntities = userMapper.selectAll();
+        List<UserEntity> userEntities = userMapper.selectAll();
         log.info(userEntities.get(0).toString());
 
     }
@@ -55,7 +56,7 @@ public class ScmApplicationTests {
 
     @Test
     public void update() {
-        UserPO userEntity = userMapper.selectByPrimaryKey(9);
+        UserEntity userEntity = userMapper.selectByPrimaryKey(9);
         userEntity.setRealName("李四");
         //在进行更新之前，它会通过注解获取当前对象的version值，然后加1，所以在更新时，version一定要有值
         //否则会报错
@@ -64,7 +65,7 @@ public class ScmApplicationTests {
 
     @Test
     public void test() {
-        UserPO userEntity = new UserPO();
+        UserEntity userEntity = new UserEntity();
         userEntity.setRealName("李四");
         userEntity.setUserName("李四");
         userEntity.setPassword("zou19941205");
@@ -97,10 +98,10 @@ public class ScmApplicationTests {
             Thread thread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    UserPO userPO = new UserPO();
-                    userPO.setUserName("a");
-                    userPO.setRealName("A");
-                    userService.add(userPO);
+                    UserEntity userEntity = new UserEntity();
+                    userEntity.setUserName("a");
+                    userEntity.setRealName("A");
+                    userService.add(userEntity);
                     countDownLatch.countDown();
                 }
             });
@@ -123,7 +124,21 @@ public class ScmApplicationTests {
     public void test5() {
         //验证下如果补货异常是否还会触发事务回滚
         userService.deleteAllData();
-       // userService.deleteData();
+        // userService.deleteData();
+    }
+
+    @Test
+    public void test6() {
+        userService.batchInsert();
+    }
+
+
+    @Test
+    public void test7() {
+
+        UserEntity userEntity = new UserEntity();
+        userEntity.setAge(1);
+        userMapper.insertSelective(userEntity);
     }
 
 

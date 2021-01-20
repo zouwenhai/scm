@@ -1,6 +1,6 @@
 package com.qhkj.scm.service;
 
-import com.qhkj.scm.model.UserPO;
+import com.qhkj.scm.model.entity.UserEntity;
 
 /**
  * @ClassName UserService
@@ -14,7 +14,7 @@ public interface UserService {
 
     void batchInsert();
 
-    void add(UserPO userPO);
+    void add(UserEntity userEntity);
 
     /**
      * 更新和删除
