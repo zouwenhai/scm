@@ -7,7 +7,7 @@ import org.apache.ibatis.reflection.DefaultReflectorFactory;
 import org.apache.ibatis.reflection.ReflectorFactory;
 import org.apache.ibatis.session.Configuration;
 
-import java.util.Properties;
+import java.utils.Properties;
 
 */
 /**

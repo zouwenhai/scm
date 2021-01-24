@@ -1,6 +1,9 @@
 package com.qhkj.scm.controller;
 
 import com.qhkj.scm.common.annotation.AesEncode;
+import com.qhkj.scm.common.enums.SexTypeEnum;
+import com.qhkj.scm.common.utils.FileUtils;
+import com.qhkj.scm.common.utils.ZipFileVO;
 import com.qhkj.scm.mapper.UserMapper;
 import com.qhkj.scm.model.SeatPO;
 import com.qhkj.scm.model.dto.AddUserReq;
@@ -8,11 +11,17 @@ import com.qhkj.scm.model.entity.UserEntity;
 import com.qhkj.scm.model.dto.UserReq;
 import com.qhkj.scm.service.SeatService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * @author zouwenhai
@@ -25,7 +34,7 @@ import javax.validation.Valid;
 @Api(value = "测试Controller", tags = "测试类")
 public class UserController {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     @Autowired
@@ -64,6 +73,27 @@ public class UserController {
         userEntity.setUserName(addUserReq.getName());
         userMapper.insertSelective(userEntity);
         return "success";
+    }
+
+
+    @ApiOperation(value = "查询")
+    @GetMapping(value = "/user/{userId}")
+    @ApiImplicitParam(value = "用户id", name = "userId", example = "1", required = true)
+    public String user(Long userId) {
+
+        UserEntity userEntity = userMapper.findList(userId, SexTypeEnum.WOMAN);
+
+        return "success";
+    }
+
+
+    @ApiOperation(value = "下载zip文件")
+    @GetMapping(value = "/download")
+    @SneakyThrows
+    public void downLoanFile(HttpServletResponse response) {
+
+        List<ZipFileVO> list = FileUtils.downLoadFile2();
+        FileUtils.compress(list, "photo.zip", response);
     }
 
 

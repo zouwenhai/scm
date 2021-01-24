@@ -7,4 +7,5 @@ spring:
 logging:
   level:
     com.qhkj.scm.mapper: debug
-
+mybatis:
+  mapper-locations: mapper/*.xml

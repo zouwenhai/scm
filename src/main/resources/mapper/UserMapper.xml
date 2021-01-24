@@ -7,7 +7,8 @@
         <result column="USER_NAME" jdbcType="VARCHAR" property="userName"/>
         <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
         <result column="REAL_NAME" jdbcType="VARCHAR" property="realName"/>
-        <result column="SEX" jdbcType="INTEGER" property="sex" typeHandler="com.qhkj.scm.handler.Sexhandler"/>
+        <result column="SEX" jdbcType="INTEGER" property="sexTypeEnum"
+                typeHandler="com.qhkj.scm.handler.SexTypeHandler"/>
         <result column="ID_CARD" jdbcType="VARCHAR" property="idCard"/>
     </resultMap>
     <update id="updateUserByUserName">
@@ -15,6 +16,18 @@
         update TB_USER set PASSWORD=#{password} where USER_NAME=#{userName}
 
     </update>
+    <select id="findList" resultType="com.qhkj.scm.model.entity.UserEntity">
+
+        select * from TB_USER where 1=1
+
+        <if test="userId!=null">
+            and ID = #{userId}
+        </if>
+        <if test="sex==@com.qhkj.scm.common.enums.SexTypeEnum@WOMAN">
+            and SEX = 0
+        </if>
+
+    </select>
 
 
 </mapper>
