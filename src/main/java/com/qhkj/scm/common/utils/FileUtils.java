@@ -48,6 +48,7 @@ public class FileUtils {
 
     }
 
+
     public static List<ZipFileVO> downLoadFile2() throws IOException {
 
         List<String> list = Arrays.asList(downUrl, downUrl2);
@@ -116,7 +117,7 @@ public class FileUtils {
 
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error(e.getMessage(), e);
 
             }
         }
