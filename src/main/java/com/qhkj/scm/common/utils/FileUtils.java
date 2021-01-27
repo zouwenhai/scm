@@ -70,7 +70,6 @@ public class FileUtils {
      */
     public static void compress(List<ZipFileVO> list, String fileName, HttpServletResponse response) {
         BufferedInputStream bis = null;
-        FileOutputStream fos = null;
         ZipOutputStream zos = null;
         OutputStream out = null;
         try {
@@ -96,18 +95,21 @@ public class FileUtils {
                 }
             }
             zos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         } finally {
             // 关闭流
             try {
-                bis.close();
-                zos.close();
-                out.close();
+                if (bis != null) {
+                    bis.close();
+                }
+                if (zos != null) {
+                    zos.close();
+                }
+                if (out != null) {
+                    out.close();
+                }
                 for (ZipFileVO zipFileVO : list) {
                     try {
                         zipFileVO.getInputStream().read();
