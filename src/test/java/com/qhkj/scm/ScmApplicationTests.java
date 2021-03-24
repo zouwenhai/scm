@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
@@ -33,6 +34,9 @@ public class ScmApplicationTests {
     @Autowired
     private SeatMapper seatMapper;
 
+    @Autowired
+    RedisTemplate redisTemplate;
+
     @Test
     public void contextLoads() {
 
@@ -45,6 +49,8 @@ public class ScmApplicationTests {
 
         List<UserEntity> userEntities = userMapper.selectAll();
         log.info(userEntities.get(0).toString());
+        redisTemplate.opsForValue().set("name","张三");
+        System.out.println(redisTemplate.opsForValue().get("name"));
 
     }
 

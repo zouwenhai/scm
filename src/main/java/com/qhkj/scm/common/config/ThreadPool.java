@@ -56,7 +56,7 @@ public class ThreadPool {
 
 
     /**
-     * 生成一个固定大小的线程池，默认拒绝策略（AbortPolicy：当运行的线程数大于最大线程数时，再往阻塞队列里面添加任务时就会丢弃最先进来的任务，然后将新任务再添加进来）
+     * 生成一个固定大小的线程池，默认拒绝策略（DiscardOldestPolicy：当运行的线程数大于最大线程数时，再往阻塞队列里面添加任务时就会丢弃最先进来的任务，然后将新任务再添加进来）
      *
      * @param corePoolSize
      * @param maximumPoolSize
@@ -77,8 +77,18 @@ public class ThreadPool {
     }
 
 
-
-
+    /**
+     * 生成一个固定大小的线程池，默认拒绝策略（CallerRunsPolicy：当运行的线程数大于最大线程数时，再往阻塞队列里面添加任务时就会由主线程去执行任务）
+     *
+     * @param corePoolSize
+     * @param maximumPoolSize
+     * @param keepAliveTime
+     * @param unit
+     * @param workQueue
+     * @return java.util.concurrent.ThreadPoolExecutor
+     * @author zouwenhai
+     * @date 2021/3/23 19:37
+     */
     public static ThreadPoolExecutor newFixedThreadPoolByRejectCallRunsPolicy(int corePoolSize,
                                                                               int maximumPoolSize,
                                                                               long keepAliveTime,
@@ -87,5 +97,9 @@ public class ThreadPool {
         return new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, new ThreadPoolExecutor.CallerRunsPolicy());
 
     }
+
+
+
+
 
 }

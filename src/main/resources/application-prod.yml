@@ -4,6 +4,13 @@ spring:
     username: root
     password: Zou@19941205
     type: com.zaxxer.hikari.HikariDataSource
+    #单机redis
+  redis:
+    database: 0
+    host: 49.233.86.230
+    port: 6379
+    password: root
+    timeout: 30000
 logging:
   level:
     com.qhkj.scm.mapper: debug

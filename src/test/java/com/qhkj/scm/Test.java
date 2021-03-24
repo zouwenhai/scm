@@ -1,12 +1,12 @@
 package com.qhkj.scm;
 
-import com.qhkj.scm.common.config.ThreadPool;
 
+
+import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+
 
 /**
  * @author zouwenhai
@@ -38,10 +38,17 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        Test test = new Test();
+/*        Test test = new Test();
 //        test.test1();
         test.testStack();
+
+
+        LinkedList list = new LinkedList();
+        list.get(1);*/
+        System.out.println(File.separator);
+
     }
+
 
 
 
