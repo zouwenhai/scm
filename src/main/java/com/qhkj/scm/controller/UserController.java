@@ -9,6 +9,8 @@ import com.qhkj.scm.model.SeatPO;
 import com.qhkj.scm.model.dto.AddUserReq;
 import com.qhkj.scm.model.entity.UserEntity;
 import com.qhkj.scm.model.dto.UserReq;
+import com.qhkj.scm.model.req.UserReq2;
+import com.qhkj.scm.model.vo.UserVO;
 import com.qhkj.scm.service.SeatService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -145,6 +147,12 @@ public class UserController {
         return "success";
     }
 
+    @ApiOperation(value = "测试方法2")
+    @PostMapping("/test2")
+    public UserVO test2(@RequestBody UserReq2 userReq) {
+        UserVO userVO = userMapper.getList();
+        return userVO;
+    }
 }
 
 

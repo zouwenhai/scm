@@ -2,6 +2,7 @@ package com.qhkj.scm.mapper;
 
 import com.qhkj.scm.common.enums.SexTypeEnum;
 import com.qhkj.scm.model.entity.UserEntity;
+import com.qhkj.scm.model.vo.UserVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.Mapper;
@@ -19,4 +20,7 @@ public interface UserMapper extends Mapper<UserEntity> {
     void updateUserByUserName(UserEntity userEntity);
 
     UserEntity findList(@Param("userId") Long userId, @Param("sex") SexTypeEnum woman);
+
+    UserVO getList();
+
 }

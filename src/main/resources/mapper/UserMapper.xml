@@ -10,6 +10,9 @@
         <result column="SEX" jdbcType="INTEGER" property="sexTypeEnum"
                 typeHandler="com.qhkj.scm.handler.SexTypeHandler"/>
         <result column="ID_CARD" jdbcType="VARCHAR" property="idCard"/>
+        <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateTime"/>
+
     </resultMap>
     <update id="updateUserByUserName">
 
@@ -27,6 +30,10 @@
             and SEX = 0
         </if>
 
+    </select>
+    <select id="getList" resultType="com.qhkj.scm.model.vo.UserVO">
+
+        select ID AS id ,CREATE_TIME AS createTime, CREATE_TIME AS createTime1,UPDATE_TIME AS updateTime from TB_USER where id=53
     </select>
 
 

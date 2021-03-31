@@ -5,6 +5,7 @@ import com.qhkj.scm.mapper.UserMapper;
 import com.qhkj.scm.model.Man;
 import com.qhkj.scm.model.SeatPO;
 import com.qhkj.scm.model.entity.UserEntity;
+import com.qhkj.scm.model.vo.UserVO;
 import com.qhkj.scm.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -49,7 +50,7 @@ public class ScmApplicationTests {
 
         List<UserEntity> userEntities = userMapper.selectAll();
         log.info(userEntities.get(0).toString());
-        redisTemplate.opsForValue().set("name","张三");
+        redisTemplate.opsForValue().set("name", "张三");
         System.out.println(redisTemplate.opsForValue().get("name"));
 
     }
@@ -149,11 +150,12 @@ public class ScmApplicationTests {
     }
 
 
-
-
-
-
-
+    @Test
+    public void test8() {
+        UserVO userVO = userMapper.getList();
+        System.out.println(userVO.getCreateTime());
+        System.out.println(userVO.getUpdateTime());
+    }
 
 
 }

@@ -10,7 +10,6 @@ spring:
     host: 49.233.86.230
     port: 6379
     password: root
-    timeout: 30000
 logging:
   level:
     com.qhkj.scm.mapper: debug
