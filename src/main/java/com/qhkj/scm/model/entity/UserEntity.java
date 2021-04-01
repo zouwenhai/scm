@@ -13,6 +13,7 @@ import tk.mybatis.mapper.annotation.Version;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @ClassName UserEntity
@@ -66,6 +67,15 @@ public class UserEntity implements Serializable {
     @Column(name = "SEX")
     @ColumnType(typeHandler = SexTypeHandler.class)
     private SexTypeEnum sexTypeEnum;
+
+    @Column(name = "CREATE_TIME")
+    private Date createTime;
+
+    @Column(name = "UPDATE_TIME")
+    private Date updateTime;
+
+
+    
 
 
     /*   *//**

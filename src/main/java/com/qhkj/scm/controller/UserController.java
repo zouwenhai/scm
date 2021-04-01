@@ -9,6 +9,7 @@ import com.qhkj.scm.model.SeatPO;
 import com.qhkj.scm.model.dto.AddUserReq;
 import com.qhkj.scm.model.entity.UserEntity;
 import com.qhkj.scm.model.dto.UserReq;
+import com.qhkj.scm.model.vo.UserVO;
 import com.qhkj.scm.service.SeatService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -26,8 +27,10 @@ import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -142,6 +145,25 @@ public class UserController {
             }
 
         }
+        return "success";
+    }
+
+    @ApiOperation(value = "测试方法2")
+    @GetMapping("/test2")
+    public UserVO test2() {
+        System.out.println(TimeZone.getDefault());
+        UserVO userVO = userMapper.getList();
+        return userVO;
+    }
+
+    @ApiOperation(value = "插入")
+    @GetMapping("/test3")
+    public String test3() {
+
+        UserEntity userEntity = new UserEntity();
+        userEntity.setCreateTime(new Date());
+        userEntity.setUpdateTime(new Date());
+        userMapper.insert(userEntity);
         return "success";
     }
 

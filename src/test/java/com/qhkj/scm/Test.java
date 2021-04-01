@@ -1,7 +1,6 @@
 package com.qhkj.scm;
 
 
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -49,9 +48,26 @@ public class Test {
 
     }
 
+    /**
+     * 就是通过
+     * @author zouwenhai
+     * @date 2021/3/25 10:09
+     * @return void
+     */
+    @org.junit.Test
+    public void test4() {
+        System.out.println("4");
+        String a = "name";
+       CallBack1 callBack1 =  new CallBack1(a) {
+            @Override
+            protected byte[] inRedis(byte[] rawKey) {
+                System.out.println(rawKey);
+                return null;
+            }
+        };
 
-
-
+        callBack1.doInRedis(3);
+    }
 
 
 }
