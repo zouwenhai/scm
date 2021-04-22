@@ -127,6 +127,8 @@
     </dependencyManagement>
 
     <build>
+        <!--指定打包的名称-->
+        <!--<finalName>test</finalName>-->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
