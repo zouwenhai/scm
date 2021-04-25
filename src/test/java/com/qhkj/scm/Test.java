@@ -44,21 +44,23 @@ public class Test {
 
         LinkedList list = new LinkedList();
         list.get(1);*/
+        System.out.println("adfsfas".substring(1));
         System.out.println(File.separator);
 
     }
 
     /**
      * 就是通过
+     *
+     * @return void
      * @author zouwenhai
      * @date 2021/3/25 10:09
-     * @return void
      */
     @org.junit.Test
     public void test4() {
         System.out.println("4");
         String a = "name";
-       CallBack1 callBack1 =  new CallBack1(a) {
+        CallBack1 callBack1 = new CallBack1(a) {
             @Override
             protected byte[] inRedis(byte[] rawKey) {
                 System.out.println(rawKey);
@@ -67,6 +69,18 @@ public class Test {
         };
 
         callBack1.doInRedis(3);
+    }
+
+
+    @org.junit.Test
+    public void test5() {
+        List<byte[]> list = new ArrayList<>();
+        int i = 0;
+        while (true) {
+            list.add(new byte[5 * 1024 * 1024]);
+            System.out.println("分配次数：" + (++i));
+        }
+
     }
 
 
