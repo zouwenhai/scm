@@ -1,5 +1,6 @@
 package com.qhkj.scm.model.entity;
 
+import com.qhkj.scm.common.annotation.AesEncode;
 import com.qhkj.scm.common.enums.SexTypeEnum;
 import com.qhkj.scm.handler.SexTypeHandler;
 import com.qhkj.scm.handler.Sexhandler;
@@ -67,6 +68,13 @@ public class UserEntity implements Serializable {
     @Column(name = "SEX")
     @ColumnType(typeHandler = SexTypeHandler.class)
     private SexTypeEnum sexTypeEnum;
+
+    /**
+     * 手机号
+     */
+    @Column(name = "mobile")
+    @AesEncode
+    private String mobile;
 
     @Column(name = "CREATE_TIME")
     private Date createTime;

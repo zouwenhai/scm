@@ -1,6 +1,7 @@
 package com.qhkj.scm.controller;
 
 import com.qhkj.scm.common.annotation.AesEncode;
+import com.qhkj.scm.common.annotation.AesEncodeMethod;
 import com.qhkj.scm.common.enums.SexTypeEnum;
 import com.qhkj.scm.common.utils.FileUtils;
 import com.qhkj.scm.common.utils.ZipFileVO;
@@ -57,7 +58,6 @@ public class UserController {
 
     @ApiOperation(value = "测试方法")
     @PostMapping("/login")
-    @AesEncode
     public String login(@Valid @RequestBody UserReq userReq) {
         UserEntity userEntity = new UserEntity();
         userEntity.setRealName("李四");
@@ -93,10 +93,9 @@ public class UserController {
     @ApiOperation(value = "查询")
     @GetMapping(value = "/user/{userId}")
     @ApiImplicitParam(value = "用户id", name = "userId", example = "1", required = true)
+    @AesEncodeMethod
     public String user(Long userId) {
-        lock.lock();
         UserEntity userEntity = userMapper.findList(userId, SexTypeEnum.WOMAN);
-
         return "success";
     }
 

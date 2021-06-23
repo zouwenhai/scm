@@ -10,6 +10,7 @@
         <result column="SEX" jdbcType="INTEGER" property="sexTypeEnum"
                 typeHandler="com.qhkj.scm.handler.SexTypeHandler"/>
         <result column="ID_CARD" jdbcType="VARCHAR" property="idCard"/>
+        <result column="MOBILE" jdbcType="VARCHAR" property="mobile"/>
         <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateTime"/>
 

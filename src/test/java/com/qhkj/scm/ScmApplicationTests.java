@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
@@ -155,6 +154,16 @@ public class ScmApplicationTests {
         UserVO userVO = userMapper.getList();
         System.out.println(userVO.getCreateTime());
         System.out.println(userVO.getUpdateTime());
+    }
+
+    @Test
+    public void test9() {
+
+        List<UserEntity> list = userMapper.selectAll();
+
+        UserEntity userEntity = new UserEntity();
+        userEntity.setMobile("123231");
+
     }
 
 

@@ -1,10 +1,10 @@
 package com.qhkj.scm.service;
 
-import com.qhkj.scm.mapper.SeatMapper;
 import com.qhkj.scm.mapper.SeatOrderMapper;
 import com.qhkj.scm.model.SeatOrderPO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
  * @date 2020/1/7 17:24
  * @work //TODO
  */
-@Service
+@Component
+@Primary
 public class SeatOrderServiceImpl implements SeatOrderService {
 
 
