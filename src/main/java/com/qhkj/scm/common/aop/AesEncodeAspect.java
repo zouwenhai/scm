@@ -23,6 +23,7 @@ public class AesEncodeAspect {
 
     @Pointcut(value = "@annotation(com.qhkj.scm.common.annotation.AesEncodeMethod)")
     public void annotationPointCut() {
+
     }
 
 
